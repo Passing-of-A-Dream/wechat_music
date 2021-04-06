@@ -1,0 +1,77 @@
+<view class="indexContainer">
+  <!-- 轮播图 -->
+  <swiper class="banners" indicator-dots indicator-color="ivory" indicator-active-color="#d43c33">
+    <swiper-item>
+      <image src="/static/images/nvsheng.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/static/images/nvsheng.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/static/images/nvsheng.jpg"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 五个图标导航 -->
+  <view class="navContainer">
+    <view class="navItem">
+      <text class="iconfont icon-tuijian"></text>
+      <text>每日推荐</text>
+    </view>
+    <view class="navItem">
+      <text class="iconfont icon-gedan"></text>
+      <text>歌单</text>
+    </view>
+    <view class="navItem">
+      <text class="iconfont icon-paihangbang"></text>
+      <text>排行榜</text>
+    </view>
+    <view class="navItem">
+      <text class="iconfont icon-diantai"></text>
+      <text>电台</text>
+    </view>
+    <view class="navItem">
+      <text class="iconfont icon-zhibo"></text>
+      <text>直播</text>
+    </view>
+  </view>
+
+  <!-- 推荐歌曲 -->
+  <view class="recommendContainer">
+    <view class="header">
+      <text class="title">推荐歌曲</text>
+      <view>
+        <text>为你精心推荐</text>
+        <text class="more">查看更多</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 推荐内容 -->
+  <scroll-view class="recommendScroll" enable-flex scroll-x="{{true}}">
+    <view class="scrollItem">
+      <image src="/static/images/nvsheng.jpg"></image>
+      <text>我喜欢这炎炎夏日下的每一丝感动泪水与西瓜</text>
+    </view>
+    <view class="scrollItem">
+      <image src="/static/images/nvsheng.jpg"></image>
+      <text>我喜欢这炎炎夏日下的每一丝感动泪水与西瓜</text>
+    </view>
+    <view class="scrollItem">
+      <image src="/static/images/nvsheng.jpg"></image>
+      <text>我喜欢这炎炎夏日下的每一丝感动泪水与西瓜</text>
+    </view>
+    <view class="scrollItem">
+      <image src="/static/images/nvsheng.jpg"></image>
+      <text>我喜欢这炎炎夏日下的每一丝感动泪水与西瓜</text>
+    </view>
+    <view class="scrollItem">
+      <image src="/static/images/nvsheng.jpg"></image>
+      <text>我喜欢这炎炎夏日下的每一丝感动泪水与西瓜</text>
+    </view>
+    <view class="scrollItem">
+      <image src="/static/images/nvsheng.jpg"></image>
+      <text>我喜欢这炎炎夏日下的每一丝感动泪水与西瓜</text>
+    </view>
+  </scroll-view>
+</view>
