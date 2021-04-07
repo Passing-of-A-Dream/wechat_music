@@ -1,3 +1,5 @@
+import request from '../../utils/request'
+// import {request} from "http:node"
 // pages/index/index.js
 Page({
 
@@ -5,14 +7,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    bannerList: [], //轮播图数据
+    recommendList: [],  //推荐歌单数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  // 获取轮播图数据
   onLoad: function (options) {
+  request('/banner', {type: 1}).then((res)=>{
+      this.setData({
+        bannerList:res.banners
+      })
+    })
 
+    // 获取推荐歌单数据
+    request('/personalized', {limit: 10}).then((res)=>{
+      this.setData({
+        recommendList: res.result
+      })
+    })
   },
 
   /**
