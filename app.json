@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/personal/personal",
+    "pages/login/login",
     "pages/video/video",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/personal/personal"
   ],
   "style": "v2",
   "sitemapLocation": "sitemap.json",
