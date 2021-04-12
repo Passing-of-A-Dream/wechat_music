@@ -9,6 +9,7 @@ Page({
   data: {
     bannerList: [], //轮播图数据
     recommendList: [],  //推荐歌单数据
+    topList: [], //排行榜数据
   },
 
   /**
@@ -28,6 +29,31 @@ Page({
         recommendList: res.result
       })
     })
+
+    //获取排行榜数据
+    /*
+      需求分析
+        1、需要根据idx的值获取对应的数据
+        2、idx的取值范围是0-20，我们需要0-4
+        3、需要发送5次请求
+      前++ 与 后++ 的区别
+        1、先看到的是运算符还是值
+        2、如果先看到的是运算符就先运算再赋值
+        3、如果先看到的值那么就先赋值再运算
+    */
+    let index = 0;
+    let resultArr = [];
+    while(index < 5){
+      request('/top/list', { idx: index++ }).then((res) => {
+        // splice(会修改原数组，可以对指定的数组进行增删改) slice(不会修改原数组)
+        let topListItem = {name: res.playlist.name, tracks: res.playlist.tracks.slice(0, 3)};
+        resultArr.push(topListItem);
+        this.setData({
+          topList: resultArr
+        })
+      })
+    }
+    
   },
 
   /**

@@ -80,6 +80,10 @@
   padding: 20rpx;
 }
 
+.topListSwiper{
+  height: 430rpx;
+}
+
 .swiperItem .title{
   font-size: 30rpx;
   line-height: 80rpx;
@@ -87,7 +91,7 @@
 
 .swiperItem{
   width: 96%;
-  /* background: pink; */
+  background: #fbfbfb;
 }
 
 .musicItem{
@@ -97,8 +101,8 @@
 }
 
 .musicItem image{
-  width: 100rpx;
-  height: 100rpx;
+  max-width: 100rpx;
+  max-height: 100rpx;
   border-radius: 6rpx;
 }
 
@@ -110,4 +114,9 @@
 }
 .musicItem .musicName{
   line-height: 100rpx;
+  height: 100rpx;
+  max-width: 350rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

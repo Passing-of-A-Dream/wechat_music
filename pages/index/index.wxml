@@ -48,14 +48,14 @@
     <!-- 头部 -->
     <NavHeader title="排行榜" nav="热歌风向标"></NavHeader>
     <!-- 内容 -->
-    <swiper class="topListSwiper">
-      <swiper-item>
+    <swiper class="topListSwiper" previous-margin="50rpx" next-margin="50rpx">
+      <swiper-item wx:for="{{topList}}" wx:key="name">
         <view class="swiperItem">
-          <view class="title">云音乐</view>
-          <view class="musicItem">
-            <image src="/static/images/hanhan.jpg"></image>
-            <text class="count">1</text>
-            <text class="musicName">平胸女子</text>
+          <view class="title">{{item.name}}</view>
+          <view class="musicItem" wx:for="{{item.tracks}}" wx:key="id" wx:for-item="musicItem">
+            <image src="{{musicItem.al.picUrl}}"></image>
+            <text class="count">{{index + 1}}</text>
+            <text class="musicName">{{musicItem.name}}</text>
           </view>
         </view>
       </swiper-item>
