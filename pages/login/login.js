@@ -13,6 +13,7 @@
     5) 密码正确返回给前端数据，提示用户登录成功(会携带用户的相关信息)
 
 */
+import request from '../../utils/request'
 Page({
 
   /**
@@ -77,7 +78,36 @@ Page({
 
 
     // 后端验证
-    
+    request('/login/cellphone', {phone, password}).then((res)=>{
+      if (res.code === 200) { //登录成功
+        wx.showToast({
+          title: '登录成功'
+        })
+        // 将用户的信息存储至本地
+        wx.setStorageSync('userInfo', JSON.stringify(res.profile));
+
+
+        // 跳转至个人中心页面的回调
+        wx.switchTab({
+          url: '/pages/personal/personal'
+        })
+      }else if(res.code === 501){
+        wx.showToast({
+          title: '账号不存在',
+          icon: 'none'
+        })
+      } else if (res.code === 502) {
+        wx.showToast({
+          title: '密码错误',
+          icon: 'none'
+        })
+      }else {
+        wx.showToast({
+          title: '登录失败，请重新登录',
+          icon: 'none'
+        })
+      }
+    })
   },
 
   /**

@@ -1,3 +1,5 @@
+import request from '../../utils/request'
+
 // pages/personal/personal.js
 let statrY = 0; //手指起始的坐标
 let moveY = 0;  //手指移动的坐标
@@ -9,14 +11,30 @@ Page({
    */
   data: {
     coverTransform: 'translateY(0)',
-    coveTransition: ''
+    coveTransition: '',
+    userInfo: {},  //用户信息
+    recenetPlayList:[]  // 用户播放记录
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 读取用户的基本信息
+    let userInfo = wx.getStorageSync('userInfo');
+    if (userInfo) {
+      // 更新userInfo的状态
+      this.setData({
+        userInfo: JSON.parse(userInfo)
+      })
 
+      // 获取用户播放记录
+    }
+  },
+
+  // 获取用户播放记录的功能函数
+  getUserRecentPlayList(userId){
+    request('/user/record', {})
   },
 
   handleTouchStart(event){
@@ -47,6 +65,14 @@ Page({
       coveTransition: 'transform 0.3s linear'
     })
   },
+
+  // 跳转到登录login页面的回调
+  toLogin(){
+    wx.reLaunch({
+      url: '/pages/login/login'
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
