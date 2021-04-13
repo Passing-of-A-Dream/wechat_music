@@ -13,7 +13,7 @@ Page({
     coverTransform: 'translateY(0)',
     coveTransition: '',
     userInfo: {},  //用户信息
-    recenetPlayList:[]  // 用户播放记录
+    recentPlayList:[]  // 用户播放记录
   },
 
   /**
@@ -29,12 +29,22 @@ Page({
       })
 
       // 获取用户播放记录
+      this.getUserRecentPlayList(this.data.userInfo.userId);
     }
   },
 
   // 获取用户播放记录的功能函数
   getUserRecentPlayList(userId){
-    request('/user/record', {})
+    request('/user/record', {uid: userId, type: 0}).then((res)=>{
+      let index = 0;
+      let recentPlayList = res.allData.splice(0,10).map(item=>{
+        item.id = index++;
+        return item;
+      })
+      this.setData({
+        recentPlayList
+      })
+    })
   },
 
   handleTouchStart(event){
@@ -64,6 +74,8 @@ Page({
       coverTransform: `translateY(0rpx)`,
       coveTransition: 'transform 0.3s linear'
     })
+      // 更新用户播放记录
+      this.getUserRecentPlayList(this.data.userInfo.userId);
   },
 
   // 跳转到登录login页面的回调
