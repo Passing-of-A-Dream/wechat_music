@@ -1,18 +1,36 @@
-// pages/video/video.js
+import request from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    viderGroupList: [],  //导航栏标签数据
+    navId: "",  //
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getViderGroupListData();
+  },
 
+  // 获取导航数据
+  getViderGroupListData(){
+    request('/video/group/list').then((res)=>{
+      this.setData({
+        viderGroupList: res.data.splice(0, 14)
+      })
+    })
+  },
+
+  // 点击切换导航的回调
+  changeNav(event){
+    let navId = event.currentTarget.id;
+    this.setData({
+      navId
+    })
   },
 
   /**

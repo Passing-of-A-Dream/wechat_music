@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/personal/personal",
     "pages/video/video",
+    "pages/personal/personal",
     "pages/index/index",
     "pages/login/login"
   ],
@@ -10,7 +10,7 @@
   "window": {
     "navigationBarBackgroundColor": "#d43c33",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "狗蛋音乐"
+    "navigationBarTitleText": "A梦音乐"
   },
   "tabBar": {
     "color": "#333333",

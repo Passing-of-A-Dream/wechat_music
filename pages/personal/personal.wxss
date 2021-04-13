@@ -225,3 +225,7 @@
   height: 200rpx;
   border-radius: 10rpx;
 }
+.recentfont{
+  font-size: 30rpx;
+  text-align: center;
+}
