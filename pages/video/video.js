@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    viderGroupList: [],  // 导航栏标签数据
+    videoGroupList: [],  // 导航栏标签数据
     navId: '',  // 导航的标识
+    videoList: []
   },
 
   /**
@@ -15,13 +16,14 @@ Page({
   onLoad: function (options) {
     // 获取导航数据
     this.getViderGroupListData();
+    this.getVideoList(this.data.navId)
   },
 
   // 获取导航数据
   getViderGroupListData(){
     request('/video/group/list').then((res)=>{
       this.setData({
-        viderGroupList: res.data.slice(0, 14),
+        videoGroupList: res.data.slice(0, 14),
         navId: res.data[0].id
       })
     })
@@ -35,6 +37,16 @@ Page({
       navId: navId>>>0
     })
   },
+
+  // 获取视频列表数据
+  getVideoList(navId){
+    request('/video/group', {id: navId}).then((res)=>{
+      this.setData({
+        videoList: res.datas
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
