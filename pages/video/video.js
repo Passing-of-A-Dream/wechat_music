@@ -5,14 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    viderGroupList: [],  //导航栏标签数据
-    navId: "",  //
+    viderGroupList: [],  // 导航栏标签数据
+    navId: '',  // 导航的标识
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 获取导航数据
     this.getViderGroupListData();
   },
 
@@ -20,19 +21,20 @@ Page({
   getViderGroupListData(){
     request('/video/group/list').then((res)=>{
       this.setData({
-        viderGroupList: res.data.splice(0, 14)
+        viderGroupList: res.data.slice(0, 14),
+        navId: res.data[0].id
       })
     })
   },
 
   // 点击切换导航的回调
   changeNav(event){
-    let navId = event.currentTarget.id;
+    let navId = event.currentTarget.id;  //通过id向event传值的时候如果传的是number会自动转成string
+    // let navId = event.currentTarget.dataset.id;
     this.setData({
-      navId
+      navId: navId>>>0
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

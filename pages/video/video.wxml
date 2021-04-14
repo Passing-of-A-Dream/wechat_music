@@ -9,7 +9,7 @@
   <!-- 导航 -->
   <scroll-view scroll-x="{{true}}" class="navScroll" enable-flex>
     <view class="navItem" wx:for="{{viderGroupList}}" wx:key="id">
-      <view class="navContent {{navId==item.id?'active': ''}}" bindtap="changeNav" id="{{item.id}}">
+      <view class="navContent {{navId === item.id?'active': ''}}" bindtap="changeNav" id="{{item.id}}" data-id="{{item.id}}">
         {{item.name}}
       </view>
     </view>
