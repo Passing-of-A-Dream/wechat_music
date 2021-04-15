@@ -18,7 +18,7 @@
   <!-- 视频列表 -->
   <scorll-view scroll-y class="videoScroll">
     <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
-      <video src="{{item.data.urlInfo.url}}" bindplay="handleplay" id="{{item.data.vid}}"  poster="{{item.data.coverUrl}}" class="common" wx:if="{{videoId == item.data.vid}}"></video>
+      <video src="{{item.data.urlInfo.url}}" bindplay="handleplay" id="{{item.data.vid}}"  poster="{{item.data.coverUrl}}" class="common" wx:if="{{videoId == item.data.vid}}" ></video>
       <!-- 性能优化：使用image标签代替video标签 -->
       <!-- 你以为真的是性能优化？其实是video标签多层渲染有毛病，老喜欢要报错（狗头） -->
       <image wx:else bindtap="handleplay" id="{{item.data.vid}}" src="{{item.data.coverUrl}}" class="common"></image>
