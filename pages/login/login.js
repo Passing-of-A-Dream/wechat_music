@@ -78,7 +78,7 @@ Page({
 
 
     // 后端验证
-    request('/login/cellphone', {phone, password}).then((res)=>{
+    request('/login/cellphone', {phone, password, isLogin: true}).then((res)=>{
       if (res.code === 200) { //登录成功
         wx.showToast({
           title: '登录成功'
