@@ -9,6 +9,7 @@ Page({
     navId: '',  // 导航的标识
     videoList: [],  // 视频数据
     videoId: '',  // 视频id标识
+    videoUpdateTime: [], // 记录video的播放时长
   },
 
   /**
@@ -66,6 +67,7 @@ Page({
     this.getVideoList(this.data.navId);
   },
 
+  // 点击播放/继续播放的回调
   handleplay(event){
     /**
      * 问题： 多个视频同时播放
@@ -92,8 +94,45 @@ Page({
 
     // 创建控制video标签的实例对象
     this.videoContext =  wx.createVideoContext(vid);
+    // 判断当前的视频之前是否播放过，是否有播放记录，如果有，跳转至上次播放位置
+    let {videoUpdateTime} = this.data;
+    let videoItem = videoUpdateTime.find(item => item.id === vid);
+    if (videoItem) {
+      this.videoContext.seek(videoItem.currentTime)
+    }
     this.videoContext.play();
     // this.videoContext.stop();
+  },
+
+  // 监听视频播放进度的回调
+  handleTimeUpdate(event){
+    let videoTimeObj = {vid: event.currentTarget.id, currentTime: event.detail.currentTime};
+    let {videoUpdateTime} = this.data;
+    /**
+     * 思路：判断记录播放时长的videoUpdateTime数组中是否有当前视频的播放记录
+     * 1、如果有，在原有的播放记录中修改播放时间为当前的播放时间
+     * 2、如果没有，需要在数组中添加当前视频的播放对象
+     */
+    let videoItem = videoUpdateTime.find(item => item.vid === videoTimeObj.vid);
+    if (videoItem) {  // 之前有
+      videoItem.currentTime = event.detail.currentTime
+    }else {  // 之前没有
+      videoUpdateTime.push(videoTimeObj)
+    }
+    // 更新videoUpdateTime的状态
+    this.setData({
+      videoUpdateTime
+    })
+  },
+
+  // 视频播放结束调用的回调
+  handleEnded(event){
+    // 移除记录播放时长数组中当前视频的对象
+    let {videoUpdateTime} = this.data;
+    videoUpdateTime.splice(videoUpdateTime.findIndex(item => item.vid === event.currentTarget.id), 1);
+    this.setData({
+      videoUpdateTime
+    })
   },
 
   /**
