@@ -16,7 +16,7 @@
   </scroll-view>
 
   <!-- 视频列表 -->
-  <scorll-view scroll-y class="videoScroll">
+  <scroll-view scroll-y class="videoScroll">
     <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
       <video src="{{item.data.urlInfo.url}}" bindplay="handleplay" id="{{item.data.vid}}"  poster="{{item.data.coverUrl}}" class="common" wx:if="{{videoId == item.data.vid}}" ></video>
       <!-- 性能优化：使用image标签代替video标签 -->
@@ -42,5 +42,5 @@
         </view>
       </view>
     </view>
-  </scorll-view>
+  </scroll-view>
 </view>
