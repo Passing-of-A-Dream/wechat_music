@@ -1,0 +1,10 @@
+<view class="recommendSongContainer">
+  <!-- 头部 -->
+  <view class="header">
+    <image src="/static/images/recommendSong/recommendSong.jpg"></image>
+    <view class="date">
+      <text class="day">17</text>
+      <text class="month">4</text>
+    </view>
+  </view>
+</view>

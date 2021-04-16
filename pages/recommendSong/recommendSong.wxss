@@ -1,0 +1,9 @@
+.recommendSongContainer .header{
+  width: 100%;
+  height: 300rpx;
+}
+
+.recommendSongContainer .header image{
+  width: 100%;
+  height: 100%;
+}

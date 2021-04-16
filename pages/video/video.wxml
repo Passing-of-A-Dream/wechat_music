@@ -16,11 +16,19 @@
   </scroll-view>
 
   <!-- 视频列表 -->
-  <scroll-view scroll-y class="videoScroll">
+  <scroll-view scroll-y
+  class="videoScroll"
+  refresher-enabled
+  bindrefresherrefresh="handleFefresher"
+  refresher-triggered="{{isTriggered}}"
+  bindscrolltolower="handleToLower"
+  >
     <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
-      <video src="{{item.data.urlInfo.url}}" bindplay="handleplay" id="{{item.data.vid}}"  poster="{{item.data.coverUrl}}" class="common" wx:if="{{videoId == item.data.vid}}"  bindtimeupdate="handleTimeUpdate" bindended="handleEnded"></video>
+      <video src="{{item.data.urlInfo.url}}" bindplay="handleplay" id="{{item.data.vid}}"  poster="{{item.data.coverUrl}}" class="common" wx:if="{{videoId == item.data.vid}}" ></video>
       <!-- 性能优化：使用image标签代替video标签 -->
       <!-- 你以为真的是性能优化？其实是video标签多层渲染有毛病，老喜欢要报错（狗头） -->
+      <!-- bindtimeupdate="handleTimeUpdate" bindended="handleEnded"
+      判断当前的视频之前是否播放过，是否有播放记录，如果有，跳转至上次播放位置 -->
       <image wx:else bindtap="handleplay" id="{{item.data.vid}}" src="{{item.data.coverUrl}}" class="common"></image>
 
       <view class="content">{{item.data.title}}</view>
@@ -36,6 +44,7 @@
             <text class="iconfont icon-4-188"></text>
             <text class="count">{{item.data.commentCount}}</text>
           </text>
+          <!-- 分享 -->
           <button open-type="share" class="item btn">
             <text class="iconfont icon-gengduo"></text>
           </button>

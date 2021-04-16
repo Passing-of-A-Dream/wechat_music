@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "A梦视频"
+  "navigationBarTitleText": "A梦视频",
+  "enablePullDownRefresh": true
 }
