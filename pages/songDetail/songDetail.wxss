@@ -25,7 +25,13 @@
   left: 60rpx;
   width: 192rpx;
   height: 274rpx;
-  /* z-index: ; */
+  transform: rotate(-25deg);
+  transform-origin: 40rpx 0;
+  transition: transform 0.8s;
+}
+
+.needleRotate{
+  transform: rotate(0);
 }
 
 /* 磁盘 */
@@ -34,6 +40,20 @@
   top: -170rpx;
   width: 598rpx;
   height: 598rpx;
+}
+
+.discAnimation{
+  animation: disc 5.5s linear infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes disc {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .disc {
@@ -51,4 +71,27 @@
   width: 370rpx;
   height: 370rpx;
   border-radius: 50%;
+}
+
+/* 底部控制区域 */
+.musicControl{
+  width: 100%;
+  display: flex;
+  position: absolute;
+  bottom: 40rpx;
+  left: 0;
+  border-top: 1rpx solid #fff;
+}
+
+.musicControl text{
+  width: 20%;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 48rpx;
+}
+
+.musicControl .big{
+  font-size: 70rpx;
 }
