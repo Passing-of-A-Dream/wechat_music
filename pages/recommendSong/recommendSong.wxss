@@ -24,7 +24,11 @@
 }
 
 .header .date .day{
-  font-size: 38rpx;
+  font-size: 42rpx;
+}
+
+.header .date .month{
+  font-size: 36rpx;
 }
 
 .ListContainer {

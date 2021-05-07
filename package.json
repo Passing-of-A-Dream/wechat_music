@@ -1,0 +1,25 @@
+{
+  "name": "wechat_music",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "pubsub-js": "^1.9.3",
+    "vant-weapp": "^0.5.29"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Passing-of-A-Dream/wechat_music.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Passing-of-A-Dream/wechat_music/issues"
+  },
+  "homepage": "https://github.com/Passing-of-A-Dream/wechat_music#readme",
+  "description": ""
+}

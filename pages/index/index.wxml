@@ -8,7 +8,7 @@
 
   <!-- 五个图标导航 -->
   <view class="navContainer">
-    <view class="navItem">
+    <view class="navItem" bingtop="recom">
       <text class="iconfont icon-tuijian"></text>
       <text>每日推荐</text>
     </view>
