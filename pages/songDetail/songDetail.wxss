@@ -73,6 +73,44 @@
   border-radius: 50%;
 }
 
+/* 进度条控制区域 */
+.progressControl{
+  position: absolute;
+  bottom: 200rpx;
+  width: 650rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+}
+
+.barControl{
+  position: relative;
+  width: 450rpx;
+  height: 4rpx;
+  background: rgba(0, 0, 0, 0.4);
+  margin: auto;
+}
+
+.audio-currentTime-Bar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100rpx;
+  height: 4rpx;
+  background: red;
+}
+
+.audio-circle{
+  position: absolute;
+  top: -4rpx;
+  right: -6rpx;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #fff;
+}
+
 /* 底部控制区域 */
 .musicControl{
   width: 100%;
