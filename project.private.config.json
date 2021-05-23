@@ -14,7 +14,7 @@
         {
           "name": "pages/index/index",
           "pathName": "pages/index/index",
-          "scene": null
+          "scene":null 
         }
       ]
     }

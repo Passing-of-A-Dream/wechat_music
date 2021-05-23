@@ -16,6 +16,7 @@ Page({
     musicLink: '',  // 音乐的链接
     currentTime: '00:00',  // 实时的时间
     durationTime: '00:00',  // 总时长
+    currentWidth: 0,  // 实时进度条的宽度
   },
 
   /**
@@ -58,6 +59,26 @@ Page({
       // 停止
       this.changePlayState(false)
     });
+    // 监听音乐播放自然结束
+    this.BackgroundAudioManager.onEnded(()=>{
+      // 自动切换至下一首并自动播放
+      PubSub.subscribe("musicId", (msg, musicId) => {
+        // 取消订阅,避免多次重复
+        PubSub.unsubscribe("musicId")
+        //获取最新歌曲信息 
+        this.getMusicInfo(musicId);
+        // 关闭当前音乐
+        this.BackgroundAudioManager.stop();
+        // 自动播放最新音乐
+        this.musicControl(true, musicId)
+      })
+      PubSub.publish('switchType', 'next')
+      // 将实时进度切换为0
+      this.setData({
+        currentTime: '00:00',
+        currentWidth: 0
+      })
+    });
 
     // 监听音乐实时播放的进度
     this.BackgroundAudioManager.onTimeUpdate(()=>{
@@ -65,9 +86,10 @@ Page({
       // console.log(this.BackgroundAudioManager.currentTime);
       // 格式化实时的播放时间
       let currentTime = moment(this.BackgroundAudioManager.currentTime * 1000).format('mm:ss')
-
+      let currentWidth = this.BackgroundAudioManager.currentTime/this.BackgroundAudioManager.duration * 450;
       this.setData({
-        currentTime
+        currentTime,
+        currentWidth
       })
     });
   },

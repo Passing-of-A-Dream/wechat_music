@@ -13,7 +13,7 @@
     <!-- 总进度条 -->
     <view class="barControl">
       <!-- 实时进度条 -->
-      <view class="audio-currentTime-Bar">
+      <view class="audio-currentTime-Bar" style="width: {{currentWidth + 'rpx'}}">
         <view class="audio-circle"></view>
       </view>
     </view>

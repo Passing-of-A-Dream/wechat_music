@@ -60,7 +60,7 @@ Page({
   recom(){
     wx.navigateTo({
       url: '/pages/recommendSong/recommendSong'
-    });
+    })
   },
 
   /**
