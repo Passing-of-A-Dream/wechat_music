@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "dependencies": {
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "pubsub-js": "^1.9.3",
     "vant-weapp": "^0.5.29"
   },
